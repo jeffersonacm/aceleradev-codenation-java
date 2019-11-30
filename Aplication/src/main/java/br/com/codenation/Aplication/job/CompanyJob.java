@@ -14,7 +14,7 @@ public class CompanyJob {
     @Autowired
     CompanyService companyService;
 
-    @Scheduled(fixedRate = 10000)
+    @Scheduled(fixedRate = 10000000)
     public void countCompany() {
         log.info("### START VERIFY COUNT COMPANIES");
         log.info("### FOUND " + companyService.getCompanyCount().toString() + " IN BASE");

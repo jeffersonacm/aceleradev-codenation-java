@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 @Transactional
@@ -14,6 +15,10 @@ public class UserService implements UserInterface {
     @Autowired
     private UserRepository userRepository;
 
+    public List<User> findAll() {
+        return userRepository.findAll();
+    }
+    
     public User updateName(Long id, String name) {
         User user = userRepository.findById(id).get();
         user.setName(name);

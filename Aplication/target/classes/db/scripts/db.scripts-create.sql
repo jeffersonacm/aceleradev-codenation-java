@@ -1,6 +1,6 @@
 --liquibase formatted sql
 
---changeset jefferson:1
+--changeset jefferson:1.0
 
 CREATE TABLE `address` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -15,7 +15,7 @@ CREATE TABLE `address` (
 
 --rollback drop table `Address`;
 
---changeset jefferson:2
+--changeset jefferson:1.1
 
 CREATE TABLE `company` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -30,7 +30,7 @@ CREATE TABLE `company` (
 
 --rollback drop table `Company`;
 
---changeset jefferson:3
+--changeset jefferson:1.2
 
 CREATE TABLE `user` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -48,3 +48,35 @@ CREATE TABLE `user` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --rollback drop table `User`;
+
+--changeset jefferson:1.3
+
+CREATE TABLE role
+(
+    id bigint(20) auto_increment,
+    name varchar(255) not null,
+    constraint role_pk
+        primary key (id)
+);
+
+-- changeset jefferson:1.4
+
+INSERT INTO role (name)
+    values("ADMIN");
+INSERT INTO role (name)
+    values("CLIENT");
+
+-- changeset jefferson:1.5
+
+CREATE TABLE user_role
+(
+    id bigint not null auto_increment,
+    user_id bigint,
+    role_id bigint,
+    constraint user_role_pk
+		primary key (id),
+    constraint user_role_user_fk
+		foreign key (user_id) references user (id),
+    constraint user_role_role_fk
+		foreign key (role_id) references role (id)
+);

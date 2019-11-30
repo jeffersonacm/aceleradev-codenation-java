@@ -10,3 +10,6 @@ material developed
 * Http
 * Rest
 * Jobs
+* swagger - Expor as informações da API
+* Spring security
+* oAuth2 - Estrutura de autorização que permitem o acesso limitado as contas

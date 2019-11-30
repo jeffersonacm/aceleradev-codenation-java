@@ -2,7 +2,7 @@ package br.com.codenation.Aplication;
 
 import br.com.codenation.Aplication.domain.entity.Company;
 import br.com.codenation.Aplication.service.impl.CompanyService;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
