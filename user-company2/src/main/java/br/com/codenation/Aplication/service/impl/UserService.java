@@ -29,4 +29,9 @@ public class UserService implements UserInterface {
         User user = userRepository.findById(id).get();
         userRepository.delete(user);
     }
+
+    @Override
+    public User findByUsername(String name) {
+        return userRepository.findByUsername(name);
+    }
 }

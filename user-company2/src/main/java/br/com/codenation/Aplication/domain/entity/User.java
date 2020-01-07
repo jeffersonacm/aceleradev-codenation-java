@@ -1,7 +1,9 @@
 package br.com.codenation.Aplication.domain.entity;
 
 import br.com.codenation.Aplication.domain.vo.UserVo;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -9,6 +11,8 @@ import java.util.List;
 
 @Entity
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,8 +47,8 @@ public class User {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name="user_role",
-            joinColumns=@JoinColumn(name="user_id"),
-            inverseJoinColumns=@JoinColumn(name="role_id")
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
     )
     private List<Role> roles;
 
@@ -63,9 +67,9 @@ public class User {
         super();
         this.name = user.getName();
         this.username = user.getUsername();
-        this.password = user.getUsername();
+        this.password = user.getPassword();
         this.age = user.getAge();
-        this.document = user.getUsername();
+        this.document = user.getDocument();
         this.roles = user.getRoles();
     }
 }

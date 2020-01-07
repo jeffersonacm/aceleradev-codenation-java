@@ -1,6 +1,7 @@
 package br.com.codenation.Aplication.domain.entity;
 
 import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
 import java.math.BigInteger;
@@ -12,12 +13,17 @@ import java.math.BigInteger;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Role {
+public class Role implements GrantedAuthority {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private BigInteger id;
+    @Column(name = "id")
+    private Long id;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name")
     private String name;
+
+    @Override
+    public String getAuthority() {
+        return this.name;
+    }
 }
