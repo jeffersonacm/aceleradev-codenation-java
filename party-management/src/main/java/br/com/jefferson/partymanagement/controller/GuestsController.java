@@ -28,4 +28,10 @@ public class GuestsController {
         return modelAndView;
     }
 
+    @PostMapping
+    public String save(Guest guest) {
+        this.guestsRepository.save(guest);
+        return "redirect:/guests";
+    }
+
 }
