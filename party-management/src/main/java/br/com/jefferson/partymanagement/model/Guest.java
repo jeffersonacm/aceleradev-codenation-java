@@ -6,8 +6,8 @@ import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Guest implements Serializable {
@@ -19,8 +19,10 @@ public class Guest implements Serializable {
     @GenericGenerator(name = "increment", strategy = "increment")
     private Long id;
 
+    @NotNull
     private String name;
 
+    @NotNull
     private Integer accompanyingQuantity;
 
     public Long getId() {

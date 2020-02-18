@@ -23,7 +23,9 @@
                 <form class="form-inline" method="POST" th:object="${guest}" th:action="@{/guests}" style="margin: 20px 0">
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Nome" th:field="*{name}"/>
+                         <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Nome erro</span>
                         <input type="text" class="form-control" placeholder="Acompanhantes" th:field="*{accompanyingQuantity}"/>
+                        <span th:if="${#fields.hasErrors('accompanyingQuantity')}" th:errors="*{accompanyingQuantity}">Erro de acompanhantes</span>
                         <button type="submit" class="btn btn-primary">Adicionar</button>
                     </div>
                 </form>
